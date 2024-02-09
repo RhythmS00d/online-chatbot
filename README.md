@@ -1,1 +1,0 @@
-An online chatbot with features like chat rooms, and media and files sharing.
