@@ -1,9 +1,33 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const linkStyle = "hover:underline"
+type Link = {
+  name: string;
+  href: string;
+};
+
+const links: Link[] = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Contacts",
+    href: "/contacts",
+  },
+  {
+    name: "Rooms",
+    href: "/rooms",
+  },
+];
+const linkStyle = "hover:underline";
 
 export const Header = () => {
+  const pathname = usePathname()
+
   return (
     <header className="w-full h-[80px] flex items-center justify-between px-8 border-b-[1px] shadow-md">
       <figure>
@@ -13,18 +37,11 @@ export const Header = () => {
         </Link>
       </figure>
       <nav className="flex gap-8">
-        <Link href="/" className={linkStyle}>
-          Home
-        </Link>
-        <Link href="/friends" className={linkStyle}>
-          Friends
-        </Link>
-        <Link href="/messages" className={linkStyle}>
-          Messages
-        </Link>
-        <Link href="/rooms" className={linkStyle}>
-          Rooms
-        </Link>
+        {links.map((link) => (
+          <Link key={link.href} href={link.href} className={linkStyle + (pathname === link.href ? " underline" : "")}>
+            {link.name}
+          </Link>
+        ))}
       </nav>
     </header>
   );
