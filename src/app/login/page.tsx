@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
 import { FaEye } from "react-icons/fa";
@@ -12,6 +13,10 @@ type Input = string;
 export default function Login() {
   const inputs: Input[] = ["Username", "Password"];
   const [showPassword, setShowPassword] = useState(false);
+
+  function handleLogin() {
+    redirect("/messages")
+  }
 
   return (
     <section className="flex items-center w-[70%]">
@@ -25,7 +30,7 @@ export default function Login() {
         />
       </figure>
       <form
-        action=""
+        action={handleLogin}
         className="flex flex-col w-[calc(100%-300px)] h-full items-start justify-center px-6 border-[2px] shadow-md"
       >
         <h1 className="px-2 mb-4 text-2xl">Login to Chatter</h1>
@@ -43,6 +48,7 @@ export default function Login() {
               }
               autoComplete="off"
               autoCorrect="off"
+              required
               className="py-4 px-2 my-2 rounded-md outline-none border-[1px] shadow-md w-full"
             />
             {input === "Password" && (
@@ -57,12 +63,12 @@ export default function Login() {
           </div>
         ))}
         <button
-          type="button"
+          type="submit"
           className="w-[100px] h-[50px] bg-button text-white rounded-md hover:bg-buttonHover mt-2"
         >
           Boom
         </button>
-        <Link href="/signup" className="hover:underline mt-2">
+        <Link href="/signup?page=1" className="hover:underline mt-2">
           New to Chatter? Signup here.
         </Link>
       </form>
