@@ -23,7 +23,7 @@ export default function Home() {
           </li>
           <li>
             <Link
-              href="/signup"
+              href="/signup?page=1"
               className="w-[120px] h-[40px] hover:bg-buttonHover bg-button text-white text-lg font-semibold flex items-center justify-center"
             >
               Sign up
