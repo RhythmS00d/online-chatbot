@@ -17,6 +17,10 @@ const config: Config = {
       borderColor: {
         footer: "#424769",
       },
+      backgroundImage: {
+        main: "url('/bg-main.svg')",
+        chat: "url('/bg-chat.svg')",
+      },
     },
   },
   plugins: [],
