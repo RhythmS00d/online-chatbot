@@ -32,7 +32,7 @@ export const Header = () => {
     <header className="w-full h-[80px] flex items-center justify-between px-8 border-b-[1px] shadow-md">
       <figure>
         <Link href="/" className="flex items-center">
-          <Image src="logo.svg" alt="Logo" width={50} height={50} />
+          <Image className="w-auto h-auto" priority src="logo.svg" alt="Logo" width={50} height={50} />
           <h3>CHATTER</h3>
         </Link>
       </figure>

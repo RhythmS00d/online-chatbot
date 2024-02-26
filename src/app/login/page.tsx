@@ -8,14 +8,16 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
+import { store } from "@/store/rootStore";
+
 type Input = string;
 
 export default function Login() {
   const inputs: Input[] = ["Username", "Password"];
   const [showPassword, setShowPassword] = useState(false);
-
+  
   function handleLogin() {
-    redirect("/messages")
+    redirect("/messages");
   }
 
   return (

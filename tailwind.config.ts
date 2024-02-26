@@ -18,8 +18,9 @@ const config: Config = {
         footer: "#424769",
       },
       backgroundImage: {
-        'main': "url('/bg-main.svg')",
-      }
+        main: "url('/bg-main.svg')",
+        chat: "url('/bg-chat.svg')",
+      },
     },
   },
   plugins: [],
