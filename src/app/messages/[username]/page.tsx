@@ -19,18 +19,23 @@ export default function page({ params }: PageProps) {
     (message) => message.username === currentUser
   )?.messages;
 
-  const messageStyle = "text-white";
+  const messageStyle =
+    "text-white bg-footer w-fit h-10 rounded-md flex items-center p-2";
 
   return (
     <section className="overflow-y-scroll w-full">
-      <ul className="flex flex-col justify-end h-full pb-20">
+      <ul className="flex flex-col justify-end h-full p-2 pb-20 gap-1">
         {messages?.from.toReversed().map((message) => (
           <li key={message.id} id={message.id} className={messageStyle + " "}>
             {message.message}
           </li>
         ))}
         {messages?.to.toReversed().map((message) => (
-          <li key={message.id} id={message.id} className={messageStyle + " "}>
+          <li
+            key={message.id}
+            id={message.id}
+            className={messageStyle + " self-end bg-green-700 justify-end"}
+          >
             {message.message}
           </li>
         ))}

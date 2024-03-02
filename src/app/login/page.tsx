@@ -8,16 +8,22 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
-import { store } from "@/store/rootStore";
+import { useRouter } from "next/navigation";
 
-type Input = string;
+// import { useStore } from "@/store/rootStore";
+import { useUserStore } from "@/store/userStore";
 
 export default function Login() {
-  const inputs: Input[] = ["Username", "Password"];
+  const inputs: string[] = ["Username", "Password"];
   const [showPassword, setShowPassword] = useState(false);
-  
+
+  const userStore = useUserStore();
+  const router = useRouter();
+
   function handleLogin() {
-    redirect("/messages");
+    userStore.setCurrentUser("lisa");
+    router.push("/messages");
+    sessionStorage.setItem("user", "lisa")
   }
 
   return (

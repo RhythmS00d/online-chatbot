@@ -1,14 +1,44 @@
-import { makeAutoObservable } from "mobx";
+import { create } from "zustand";
 
-export class UIStore {
-  showFooter: boolean;
+type Link = {
+  name: string;
+  href: string;
+};
 
-  constructor() {
-    makeAutoObservable(this);
-    this.showFooter = true;
-  }
+type Links = {
+  user: Link[];
+  noUser: Link[];
+};
 
-  setShowFooter(value: boolean) {
-    this.showFooter = value;
-  }
-}
+type Store = {
+  links: Links;
+};
+
+export const useUIStore = create<Store>((set) => ({
+  links: {
+    user: [
+      {
+        name: "Messages",
+        href: "/messages",
+      },
+      {
+        name: "Contacts",
+        href: "/contacts",
+      },
+      {
+        name: "Rooms",
+        href: "/rooms",
+      },
+    ],
+    noUser: [
+      {
+        name: "Login",
+        href: "/login",
+      },
+      {
+        name: "Register",
+        href: "/signup",
+      },
+    ],
+  },
+}));

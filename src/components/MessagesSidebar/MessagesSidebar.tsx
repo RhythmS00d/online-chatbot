@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { CiSearch } from "react-icons/ci";
 
@@ -35,26 +36,29 @@ export default function MessagesSidebar() {
       </search>
       <ul className="w-full pt-3 px-1 rounded-md">
         {USER.currentUserContacts?.map((contact) => (
-          <li
-            className="cursor-pointer text-white hover:bg-[#2a7fbd] bg-[#0d344f] relative h-[80px] rounded-md tracking-wider flex items-start justify-start px-2 py-1 mb-2 font-semibold"
-            key={contact.id}
-          >
-            <Image
-              src="/profile-pic.svg"
-              alt="profile-pic"
-              width={70}
-              height={70}
-              className="rounded-full mr-4 shadow-sm shadow-yellow-50"
-            />
-            <h3 className="text-sm mt-2">{contact.username.toUpperCase()}</h3>
-            <span className="text-fuchsia-400 text-[12px] mt-2">
-              #{contact.id}
-            </span>
-            <p className="absolute top-10 text-white left-[92px] text-sm tracking-widest">
-              {`> `}
-              {getLastUserMessage(contact.username)}
-            </p>
-          </li>
+          <Link key={contact.id} href={"/messages/" + contact.username}>
+            <li
+              className={
+                "cursor-pointer text-white hover:bg-[#2a7fbd] bg-[#0d344f] relative h-[80px] rounded-md tracking-wider flex items-start justify-start px-2 py-1 mb-2 font-semibold "
+              }
+            >
+              <Image
+                src="/profile-pic.svg"
+                alt="profile-pic"
+                width={70}
+                height={70}
+                className="rounded-full mr-4 shadow-sm shadow-yellow-50"
+              />
+              <h3 className="text-sm mt-2">{contact.username.toUpperCase()}</h3>
+              <span className="text-fuchsia-400 text-[12px] mt-2">
+                #{contact.id}
+              </span>
+              <p className="absolute top-10 text-white left-[92px] text-sm tracking-widest">
+                {`> `}
+                {getLastUserMessage(contact.username)}
+              </p>
+            </li>
+          </Link>
         ))}
       </ul>
     </aside>
