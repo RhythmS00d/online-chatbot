@@ -6,10 +6,7 @@ import "./globals.css";
 import { Container } from "@/components/Container/Container";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
-
-// import { store } from "@/store/rootStore";
-
-// import { observer } from "mobx-react";
+import { AuthContextProvider } from "@/contexts/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,12 +24,14 @@ function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " w-full h-dvh bg-main"}>
-        <Container>
-          <Header />
-          {children}
-          {/* {showFooter && <Footer />} */}
-          <Footer />
-        </Container>
+        <AuthContextProvider>
+          <Container>
+            <Header />
+            {children}
+            {/* {showFooter && <Footer />} */}
+            <Footer />
+          </Container>
+        </AuthContextProvider>
       </body>
     </html>
   );
