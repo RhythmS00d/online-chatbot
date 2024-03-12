@@ -1,15 +1,15 @@
 export type Contact = {
-  id: string,
-  name: string,
-  email: string,
-  phone: string,
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
 };
 
 export type User = {
-  id: string,
-  name: string,
-  email: string,
-  contacts: Contact[],
+  id: string;
+  name: string;
+  email: string;
+  contacts: Contact[];
 };
 
 type Link = {
@@ -33,4 +33,12 @@ export type UserStore = {
   userDetails: User | null;
   setCurrentUser: (user: string) => void;
   setUserDetails: (user: User) => void;
+};
+
+export type SignupDetails = {
+  email: string;
+  password: string;
+  username: string;
+  name: string;
+  "confirm password": string;
 };

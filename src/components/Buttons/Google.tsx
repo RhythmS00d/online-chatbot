@@ -1,10 +1,10 @@
 import { UserAuth } from "@/contexts/AuthContext";
 import "./buttons.css";
 
-export function GoogleButton() {
-  const { googleSignIn } = UserAuth();
+export function GoogleButton({ text }: { text: string }) {
+  const { fbActions } = UserAuth();
   return (
-    <button className="gsi-material-button" onClick={googleSignIn}>
+    <button className="gsi-material-button" onClick={fbActions.googleSignIn}>
       <div className="gsi-material-button-state"></div>
       <div className="gsi-material-button-content-wrapper">
         <div className="gsi-material-button-icon">
@@ -35,9 +35,9 @@ export function GoogleButton() {
           </svg>
         </div>
         <span className="gsi-material-button-contents">
-          Sign in with Google
+          Sign {text} with Google
         </span>
-        <span style={{ display: "none" }}>Sign in with Google</span>
+        <span style={{ display: "none" }}>Sign {text} with Google</span>
       </div>
     </button>
   );

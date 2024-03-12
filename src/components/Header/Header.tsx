@@ -15,7 +15,7 @@ const linkStyle = "hover:underline";
 export const Header = () => {
   const pathname = usePathname();
 
-  const { user, logOut } = UserAuth();
+  const { user, fbActions } = UserAuth();
 
   const links = [
     {
@@ -58,7 +58,7 @@ export const Header = () => {
           </Link>
         ))}
         {user && (
-          <Link href="/" onClick={logOut}>
+          <Link href="/" onClick={fbActions.logOut}>
             Sign Out
           </Link>
         )}
