@@ -12,7 +12,9 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      document.cookie = `CurrentUser = ${JSON.stringify(currentUser.displayName)}; SameSite=None; secure`
+      document.cookie = `CurrentUser = ${JSON.stringify(
+        currentUser ? currentUser.displayName : null
+      )}; SameSite=None; Path=/; secure`;
       setUser(currentUser);
     });
     return () => unsubscribe();

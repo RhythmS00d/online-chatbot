@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   sendEmailVerification,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
 
@@ -54,8 +55,12 @@ class FirebaseActions {
     }
   }
 
-  async log() {
-    console.log("works");
+  async signInWithEmail(email: string, password: string) {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

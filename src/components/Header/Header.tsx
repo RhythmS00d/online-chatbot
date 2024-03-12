@@ -17,20 +17,32 @@ export const Header = () => {
 
   const { user, fbActions } = UserAuth();
 
-  const links = [
-    {
-      name: "Home",
-      href: "/",
-    },
-    {
-      name: "Contacts",
-      href: "/contacts",
-    },
-    {
-      name: "Rooms",
-      href: "/rooms",
-    },
-  ];
+  const links = {
+    user: [
+      {
+        name: "Home",
+        href: "/",
+      },
+      {
+        name: "Contacts",
+        href: "/contacts",
+      },
+      {
+        name: "Rooms",
+        href: "/rooms",
+      },
+    ],
+    noUser: [
+      {
+        name: "Login",
+        href: "/login",
+      },
+      {
+        name: "Sign up",
+        href: "/signup",
+      },
+    ],
+  };
 
   return (
     <header className="w-full h-[80px] flex items-center justify-between px-8 border-b-[1px] shadow-md">
@@ -48,7 +60,7 @@ export const Header = () => {
         </Link>
       </figure>
       <nav className="flex gap-8">
-        {links.map((link) => (
+        {links[user ? "user" : "noUser"].map((link) => (
           <Link
             key={link.href}
             href={link.href}
@@ -58,7 +70,11 @@ export const Header = () => {
           </Link>
         ))}
         {user && (
-          <Link href="/" onClick={fbActions.logOut}>
+          <Link
+            href="/"
+            onClick={fbActions.logOut}
+            className={linkStyle}
+          >
             Sign Out
           </Link>
         )}
