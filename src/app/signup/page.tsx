@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { createHash } from "crypto";
 
 //components
 import { GoogleButton } from "@/components/Buttons";
