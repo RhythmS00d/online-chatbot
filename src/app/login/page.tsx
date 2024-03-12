@@ -17,7 +17,7 @@ export default function Login() {
   const inputs: string[] = ["Username", "Password"];
   const [showPassword, setShowPassword] = useState(false);
 
-  const { user } = UserAuth();
+  const { user, fbActions } = UserAuth();
 
   const router = useRouter();
 

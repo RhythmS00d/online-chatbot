@@ -12,6 +12,8 @@ const provider = new GoogleAuthProvider();
 
 const errors = {
   "auth/email-already-in-use": "Email already in use. Please sign in.",
+  "auth/user-not-found": "User not found! Please sign up.",
+  "auth/weak-password": "Password should be at least 6 characters.",
 };
 
 class FirebaseActions {
