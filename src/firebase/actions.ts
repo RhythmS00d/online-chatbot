@@ -6,6 +6,7 @@ import {
   updateProfile,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
 
@@ -17,7 +18,7 @@ const errors = {
   "auth/weak-password": "Password should be at least 6 characters.",
 };
 
-class FirebaseActions {
+export class FirebaseActions {
   constructor() {}
 
   async googleSignIn() {
@@ -58,8 +59,24 @@ class FirebaseActions {
   async signInWithEmail(email: string, password: string) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      return {
+        status: "ok",
+      };
     } catch (error) {
       console.log(error);
+      return {
+        status: "error",
+        code: error.code,
+        message: errors[error.code],
+      };
+    }
+  }
+
+  async forgotPassword(email: string) {
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+      console.log(error.code, error.message);
     }
   }
 }

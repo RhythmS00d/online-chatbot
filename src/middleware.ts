@@ -7,12 +7,12 @@ export function middleware(request: NextRequest) {
   const user = request.cookies.get("CurrentUser");
 
   if (path === "/signup" || path === "/login" || path === "/") {
-    if (user.value !== "null")
+    if (user?.value !== "null")
       return NextResponse.redirect(new URL("/messages", request.url));
   }
 
   if (path === "/messages" || path === "/contacts" || path === "/rooms") {
-    if (user.value === "null")
+    if (user?.value === "null")
       return NextResponse.redirect(new URL("/", request.url));
   }
 }

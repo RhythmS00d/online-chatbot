@@ -7,6 +7,7 @@ import { Container } from "@/components/Container/Container";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 import { AuthContextProvider } from "@/contexts/AuthContext";
+import { UIContextProvider } from "@/contexts/UIContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,9 +28,11 @@ function RootLayout({
         <AuthContextProvider>
           <Container>
             <Header />
-            {children}
-            {/* {showFooter && <Footer />} */}
-            <Footer />
+            <UIContextProvider>
+              {children}
+              {/* {showFooter && <Footer />} */}
+              <Footer />
+            </UIContextProvider>
           </Container>
         </AuthContextProvider>
       </body>

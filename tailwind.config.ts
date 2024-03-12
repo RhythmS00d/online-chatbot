@@ -21,6 +21,15 @@ const config: Config = {
         main: "url('/bg-main.svg')",
         chat: "url('/bg-chat.svg')",
       },
+      animation: {
+        expand: "notification 200ms linear",
+      },
+      keyframes: {
+        notification: {
+          from: { transform: "scaleX(0)" },
+          to: { transform: "scaleX(1)" },
+        },
+      },
     },
   },
   plugins: [],
